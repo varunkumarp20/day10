@@ -1,0 +1,661 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Varun Kumar P | Portfolio</title>
+  <meta name="description" content="Personal portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --royal: #f7a9c4;
+      --royal-dark: #a94b78;
+      --royal-soft: #ffe6f0;
+      --ink: #2a0f1d;
+      --paper: #ffffff;
+      --accent: #ffffff;
+      --beige: #fff4e6;
+      --beige-border: rgba(240, 190, 160, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Sora", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(247, 169, 196, 0.28), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(169, 75, 120, 0.22), transparent 55%),
+        linear-gradient(120deg, #1f1f1f 0%, #2b2b2b 45%, #3a3a3a 100%);
+      background-size: 120% 120%;
+      animation: roamBackground 12s ease-in-out infinite;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8) 60%, transparent 61%),
+        radial-gradient(2px 2px at 80% 20%, rgba(255, 255, 255, 0.6) 60%, transparent 61%),
+        radial-gradient(1.5px 1.5px at 60% 70%, rgba(255, 255, 255, 0.7) 60%, transparent 61%),
+        radial-gradient(1px 1px at 35% 80%, rgba(255, 255, 255, 0.5) 60%, transparent 61%),
+        radial-gradient(600px 400px at 70% 40%, rgba(255, 255, 255, 0.12), transparent 70%),
+        radial-gradient(500px 300px at 30% 60%, rgba(255, 255, 255, 0.1), transparent 70%);
+      mix-blend-mode: screen;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      background:
+        radial-gradient(1px 1px at 15% 20%, rgba(255, 255, 255, 0.9) 60%, transparent 61%),
+        radial-gradient(1px 1px at 45% 55%, rgba(255, 255, 255, 0.7) 60%, transparent 61%),
+        radial-gradient(1px 1px at 70% 30%, rgba(255, 255, 255, 0.6) 60%, transparent 61%),
+        radial-gradient(1px 1px at 85% 75%, rgba(255, 255, 255, 0.8) 60%, transparent 61%),
+        radial-gradient(1px 1px at 30% 80%, rgba(255, 255, 255, 0.5) 60%, transparent 61%);
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+      animation: starDrift 22s linear infinite;
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.25) 35%, transparent 70%);
+      mix-blend-mode: screen;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
+      z-index: 2;
+    }
+
+    .cursor-glow.active {
+      opacity: 1;
+      filter: blur(2px);
+    }
+
+    header {
+      background: linear-gradient(120deg, var(--royal) 0%, var(--royal-dark) 100%);
+      color: var(--paper);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 6px 20px rgba(5, 10, 40, 0.25);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    nav a {
+      color: var(--paper);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 20px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+      display: grid;
+      gap: 40px;
+    }
+
+    section {
+      background: var(--paper);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 16px 40px rgba(169, 75, 120, 0.12);
+      border: 1px solid rgba(247, 169, 196, 0.35);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      color: var(--royal-dark);
+      letter-spacing: 0.02em;
+      font-family: "Space Grotesk", "Segoe UI", "Trebuchet MS", sans-serif;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+    }
+
+    .typing {
+      display: inline-block;
+      opacity: 0;
+      animation: nameFadeIn 1.2s ease forwards;
+    }
+
+    @keyframes nameFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scramble {
+      display: inline-block;
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-layout {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: center;
+    }
+
+    .profile-card {
+      background: rgba(196, 170, 255, 0.88);
+      color: #2a0f1d;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: grid;
+      gap: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .profile-row {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #4bb4ff;
+      box-shadow: 0 0 0 6px rgba(75, 180, 255, 0.2);
+      background: #0f111a;
+    }
+
+    .profile-card h3 {
+      margin: 0 0 6px;
+      color: #2a0f1d;
+      font-size: 1.3rem;
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: rgba(42, 15, 29, 0.75);
+    }
+
+    .profile-meta {
+      display: grid;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: var(--royal-soft);
+      color: var(--royal-dark);
+      border: 1px solid rgba(27, 47, 191, 0.2);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .badge:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 24px rgba(169, 75, 120, 0.22);
+    }
+
+
+    .highlight {
+      color: var(--royal);
+      font-weight: 700;
+      position: relative;
+      animation: highlightFade 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes highlightFade {
+      0% {
+        opacity: 0;
+        filter: blur(3px);
+        transform: translateY(6px);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+
+    .grid-two {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--beige);
+      border: 1px solid var(--beige-border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 18px 32px rgba(169, 75, 120, 0.18);
+    }
+
+    .repo-list {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    .repo-item {
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--beige);
+      border: 1px solid var(--beige-border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    section,
+    .card,
+    .repo-item {
+      background: var(--beige);
+      border-color: var(--beige-border);
+    }
+
+    .repo-item:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 18px 32px rgba(169, 75, 120, 0.18);
+    }
+
+    @keyframes roamBackground {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes starDrift {
+      from {
+        transform: translate3d(-2%, -2%, 0);
+      }
+      to {
+        transform: translate3d(2%, 2%, 0);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 16px 40px;
+      color: var(--royal-dark);
+    }
+
+    @media (max-width: 720px) {
+      nav {
+        justify-content: flex-start;
+      }
+
+      h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-layout">
+        <div>
+          <h1><span class="typing scramble" data-text="Varun Kumar P">Varun Kumar P</span></h1>
+          <p>
+            Welcome to my portfolio. I design and build reliable web experiences
+            with a strong focus on <span class="highlight">clarity</span>,
+            <span class="highlight">performance</span>, and
+            <span class="highlight">detail</span>.
+          </p>
+          <div class="hero-badges">
+            <span class="badge">Frontend Engineer</span>
+            <span class="badge">UI Design</span>
+            <span class="badge">Problem Solver</span>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-row">
+            <img
+              class="profile-photo"
+              src="profile.jpg/d7efd0f2-d32d-436f-91a9-a841abc30e25.jpg"
+              alt="Varun Kumar P profile photo"
+            />
+            <div>
+              <h3>Varun Kumar P</h3>
+              <p>CS-BS Student</p>
+            </div>
+          </div>
+          <div class="profile-meta">
+            <span>Maharaja Institute of Technology, Mysuru</span>
+            <span>Location: Mysore, Karnataka, India</span>
+            <span>GitHub: varunkumarp20</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a developer focused on building useful products with attention
+        to detail, accessibility, and performance.
+      </p>
+      <p>
+        I am a student in the CS-BS branch at Maharaja Institute of Technology, Mysuru.
+      </p>
+      <p>
+        My interests include frontend engineering, UI design, and creating
+        tools that help people work faster.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid-two">
+        <article class="card">
+          <h3>Project One</h3>
+          <p>
+            A short description of the project, the problem it solves, and
+            the technologies used.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Project Two</h3>
+          <p>
+            A short description of the project, the impact, and the main
+            features you are proud of.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Project Three</h3>
+          <p>
+            A short description of the project, the role you played, and
+            the outcomes achieved.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Project Four</h3>
+          <p>
+            A brief summary that highlights user value and notable outcomes.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="repositories">
+      <h2>Repositories (7+)</h2>
+      <div class="repo-list">
+        <div class="repo-item">
+          <h3>Repository One</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+        <div class="repo-item">
+          <h3>Repository Two</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+        <div class="repo-item">
+          <h3>Repository Three</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+        <div class="repo-item">
+          <h3>Repository Four</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+        <div class="repo-item">
+          <h3>Repository Five</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+        <div class="repo-item">
+          <h3>Repository Six</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+        <div class="repo-item">
+          <h3>Repository Seven</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+        <div class="repo-item">
+          <h3>Repository Eight</h3>
+          <p>Short description of the repository and its focus.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="grid-two">
+        <div class="card">
+          <h3>Role One</h3>
+          <p>Company — Year</p>
+          <p>Short summary of responsibilities and impact.</p>
+        </div>
+        <div class="card">
+          <h3>Role Two</h3>
+          <p>Company — Year</p>
+          <p>Short summary of responsibilities and impact.</p>
+        </div>
+        <div class="card">
+          <h3>Role Three</h3>
+          <p>Company — Year</p>
+          <p>Short summary of responsibilities and impact.</p>
+        </div>
+        <div class="card">
+          <h3>Role Four</h3>
+          <p>Company — Year</p>
+          <p>Short summary of responsibilities and impact.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skill-types">
+      <h2>Skill Types</h2>
+      <div class="grid-two">
+        <div class="card">
+          <h3>Frontend</h3>
+          <p>HTML, CSS, JavaScript, responsive layouts, UI implementation.</p>
+        </div>
+        <div class="card">
+          <h3>Backend</h3>
+          <p>APIs, database basics, server-side logic, authentication.</p>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <p>Git, GitHub, VS Code, debugging, command line workflow.</p>
+        </div>
+        <div class="card">
+          <h3>Soft Skills</h3>
+          <p>Communication, teamwork, problem-solving, time management.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>Testimonials</h2>
+      <div class="grid-two">
+        <blockquote class="card">
+          <p>"A dependable developer who delivers on time and communicates clearly."</p>
+          <p>— Teammate</p>
+        </blockquote>
+        <blockquote class="card">
+          <p>"Great attention to detail and a strong sense of user experience."</p>
+          <p>— Project Lead</p>
+        </blockquote>
+        <blockquote class="card">
+          <p>"Consistent, thoughtful, and fast to iterate on feedback."</p>
+          <p>— Mentor</p>
+        </blockquote>
+        <blockquote class="card">
+          <p>"Reliable collaborator with strong problem-solving skills."</p>
+          <p>— Client</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid-two">
+        <div class="card">
+          <h3>Email</h3>
+          <p>varunkumarp@gmail.com</p>
+        </div>
+        <div class="card">
+          <h3>Location</h3>
+          <p>Mysore, Karnataka, India</p>
+        </div>
+        <div class="card">
+          <h3>Availability</h3>
+          <p>Open to opportunities</p>
+        </div>
+        <div class="card">
+          <h3>GitHub</h3>
+          <p>varunkumarp20</p>
+        </div>
+        <div class="card">
+          <h3>LinkedIn</h3>
+          <p>
+            <a href="https://www.linkedin.com/in/varun-kumar-p-b063073ab?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer">varun-kumar-p</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Varun Kumar P. All rights reserved.</p>
+  </footer>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <script>
+    const scrambleTargets = document.querySelectorAll(".scramble");
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    scrambleTargets.forEach((target) => {
+      const finalText = target.dataset.text || target.textContent;
+      let frame = 0;
+      const totalFrames = 18;
+      const interval = setInterval(() => {
+        const progress = frame / totalFrames;
+        const revealed = Math.floor(finalText.length * progress);
+        let output = "";
+
+        for (let i = 0; i < finalText.length; i++) {
+          if (i < revealed) {
+            output += finalText[i];
+          } else if (finalText[i] === " ") {
+            output += " ";
+          } else {
+            output += chars[Math.floor(Math.random() * chars.length)];
+          }
+        }
+
+        target.textContent = output;
+        frame += 1;
+
+        if (frame > totalFrames) {
+          target.textContent = finalText;
+          clearInterval(interval);
+        }
+      }, 45);
+    });
+
+    const cursorGlow = document.querySelector(".cursor-glow");
+    let glowTimer;
+
+    window.addEventListener("mousemove", (event) => {
+      if (!cursorGlow) return;
+      cursorGlow.style.left = `${event.clientX}px`;
+      cursorGlow.style.top = `${event.clientY}px`;
+      cursorGlow.classList.add("active");
+      clearTimeout(glowTimer);
+      glowTimer = setTimeout(() => {
+        cursorGlow.classList.remove("active");
+      }, 250);
+    });
+  </script>
+</body>
+</html>
